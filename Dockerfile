@@ -9,8 +9,9 @@ RUN apt update && \
     apt install -y r-base && \
     apt install -y wget python3 python3-pip git
 
-RUN mkdir /usr/local/fastx-toolkit && \
-    cd /usr/local/fastx-toolkit && \
-    wget --quiet http://hannonlab.cshl.edu/fastx_toolkit/fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2 && \
-    tar xvf fastx_toolkit_0.0.13_binaries_Linux_2.6_amd64.tar.bz2 && \
-    mv bin/* /usr/local/bin/
+RUN mkdir /usr/local/sequeltools && \
+    cd /usr/local/sequeltools && \
+    git clone https://github.com/ISUgenomics/SequelTools.git && \
+    cd SequelTools/Scripts && \
+    chmod +x *.sh *.py *.R && \
+    export PATH=$PATH:"$(pwd)"
