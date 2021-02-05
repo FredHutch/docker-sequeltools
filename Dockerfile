@@ -13,7 +13,8 @@ RUN mkdir /usr/local/sequeltools && \
     cd /usr/local/sequeltools && \
     git clone https://github.com/ISUgenomics/SequelTools.git && \
     cd SequelTools/Scripts && \
-    chmod +x *.sh *.py *.R && \
-    export PATH=$PATH:"$(pwd)"
+    chmod +x *.sh *.py *.R
+
+ENV PATH="/usr/local/sequeltools/SequelTools/Scripts/:${PATH}"
 
 RUN apt install -y samtools
