@@ -15,3 +15,12 @@ RUN mkdir /usr/local/sequeltools && \
     cd SequelTools/Scripts && \
     chmod +x *.sh *.py *.R && \
     export PATH=$PATH:"$(pwd)"
+
+RUN mkdir /usr/local/samtools && \
+    cd /usr/local/samtools && \
+    wget https://github.com/samtools/samtools/releases/download/1.11/samtools-1.11.tar.bz2 \
+    tar xvf samtools-1.11.tar.bz2 && \
+    cd samtools-1.11 && \
+    ./configure --prefix=/usr/local/bin && \
+    make && \
+    make install
